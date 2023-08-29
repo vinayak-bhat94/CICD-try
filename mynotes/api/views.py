@@ -61,6 +61,7 @@ def createNote(request):
     print("coming here")
     if request.method == "POST":
         data = request.data
+        data["user"] = request.user.id
         serializer = NoteSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
